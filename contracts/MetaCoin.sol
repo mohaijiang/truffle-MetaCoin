@@ -14,7 +14,8 @@ contract MetaCoin {
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
 	constructor() {
-		balances[msg.sender] = 10000;
+		// solium-disable-next-line security/no-tx-origin
+		balances[tx.origin] = 10000;
 	}
 
 	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
